@@ -8,7 +8,7 @@ const Todos = () => {
   
   React.useEffect(() => {
     getTodos()
-  });
+  }, []);
   
   async function getTodos() {
     await api.get('/todos/').then(res =>  {

@@ -21,7 +21,7 @@ const SingleTodo: React.FC<SingleTodoProps> = ({ match }) => {
 
   React.useEffect(() => {
     getTodo()
-  });
+  }, []);
   
   function getTodo() {
     api.get('/todos/' + match.params.id).then(res =>  {
