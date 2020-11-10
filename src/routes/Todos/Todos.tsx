@@ -1,6 +1,7 @@
 import React from 'react'
 import ITodos from '../../types/TodoTypes'
 import api from '../../utils/api'
+import { Card, Col, Row } from 'antd';
 
 
 const Todos = () => {
@@ -17,19 +18,23 @@ const Todos = () => {
   }
 
   return (
-    <div>
-      <h1>All Todos</h1>
-      <div>
-        {todos.map(todo => (
+  <div style={{ background: '#ECECEC', padding: '20px' }}>
+    <Row type="flex" justify="start" align="stretch" gutter={16}>
+      {todos.map(todo => (
+        <Col xs={12} sm={12} md={8} lg={6} xl={4} style={{ paddingBottom: '20px'}}>
           <a key={todo.id} href={"/todos/" + todo.id}>
-            {todo.title}
+            <Card title={todo.title} bordered={true} hoverable={true}>
+              {todo.entries.map(entry => (
+                <li>{entry.text_entry}</li>
+              ))}
+            </Card>
           </a>
-          )
-        )}
-      </div>
-    </div>
+        </Col>
+      ))}
+    </Row>
+  </div>
+  // </div>
   )
-
 }
 
-export default Todos;
+export default Todos
